@@ -27,4 +27,4 @@ Through this task, key technical skills were practiced, including JavaScript eve
 
 Overall, this Real-Time Chat Application provides hands-on experience in building interactive web applications with real-time functionality. It demonstrates practical problem-solving abilities and foundational knowledge of front-end development combined with cloud-based services. This project serves as a valuable learning exercise and a strong example of implementing real-time features in a simple, effective web application suitable for internship-level development
 
-Output-
+Output- <img width="1893" height="1022" alt="Image" src="https://github.com/user-attachments/assets/4a7cfca2-77d4-4fe7-ba41-73afd387f25a" />
