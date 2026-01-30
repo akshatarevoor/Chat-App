@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Real Time Chat App</title>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#4facfe;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.chat-box{
+background:white;
+padding:20px;
+width:350px;
+border-radius:10px;
+}
+
+#messages{
+height:200px;
+border:1px solid #ccc;
+overflow-y:scroll;
+margin:10px 0;
+padding:5px;
+}
+
+input,button{
+width:100%;
+padding:8px;
+margin-top:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="chat-box">
+
+<h2>Real-Time Chat</h2>
+
+<input id="name" placeholder="Enter your name">
+
+<div id="messages"></div>
+
+<input id="msg" placeholder="Enter message">
+
+<button onclick="send()">Send</button>
+
+</div>
+
+<script>
+var firebaseConfig = {
+apiKey: "AIzaSyBJN-QfLZ4_2KsdHtv3hoYpf0WuD8IQS_w",
+  authDomain: "chat-app-caeb2.firebaseapp.com",
+  projectId: "chat-app-caeb2",
+  storageBucket: "chat-app-caeb2.firebasestorage.app",
+  messagingSenderId: "703244151867",
+  appId: "1:703244151867:web:977c09da89b9ab45e0801e",
+  measurementId: "G-5LSSSX1FYC"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+var db = firebase.database();
+
+function send(){
+var name = document.getElementById("name").value;
+var msg = document.getElementById("msg").value;
+
+db.ref("chat").push({
+user:name,
+message:msg
+});
+
+document.getElementById("msg").value="";
+}
+
+db.ref("chat").on("child_added",function(snapshot){
+var data = snapshot.val();
+
+var p = document.createElement("p");
+p.innerHTML = "<b>"+data.user+":</b> "+data.message;
+
+document.getElementById("messages").appendChild(p);
+});
+</script>
+
+</body>
+</html>
+
